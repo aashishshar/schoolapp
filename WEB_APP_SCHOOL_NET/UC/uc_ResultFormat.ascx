@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="uc_ResultFormat.ascx.cs" Inherits="WEB_APP_SCHOOL_NET.UC.ResultFormat" %>
+<asp:DropDownList ID="ddlResultFormat" runat="server"></asp:DropDownList>

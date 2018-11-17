@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web_app_school_net:
+    ports:
+      - "80"
+networks:
+  default:
+    external:
+      name: nat

@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="uc_FinYear.ascx.cs" Inherits="WEB_APP_SCHOOL_NET.UC.uc_FinYear" %>
+  <asp:DropDownList style="width:100%" ID="ddlFinYear" runat="server"></asp:DropDownList>

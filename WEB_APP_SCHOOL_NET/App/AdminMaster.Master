@@ -1,0 +1,719 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.Master.cs" Inherits="WEB_APP_SCHOOL_NET.App.AdminMaster" %>
+
+<%@ Register Src="~/UC/uc_Header.ascx" TagPrefix="uc1" TagName="uc_Header" %>
+<%@ Register Src="~/UC/uc_LeftMenu.ascx" TagPrefix="uc1" TagName="uc_LeftMenu" %>
+<%@ Register Src="~/UC/uc_Footer.ascx" TagPrefix="uc1" TagName="uc_Footer" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="~/Content/bootstrap/css/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
+
+    <link rel="stylesheet" href="~/Content/plugins/datatables/dataTables.bootstrap.css" />
+       <link rel="stylesheet" href="~/Content/plugins/timepicker/bootstrap-timepicker.min.css" />
+    <link rel="stylesheet" href="~/Content/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" href="~/Content/dist/css/skins/_all-skins.min.css" />
+        <link rel="stylesheet" href="~/Content/dist/css/select2.min.css" />
+     <link rel="stylesheet" href="~/Content/dist/css/print.min.css" />
+   
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server">
+
+            <Scripts>
+                <%--<asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="jquery.ui.combined" />--%>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-3.1.1.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-3.1.1.min.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-ui-1.12.1.js" />
+                <asp:ScriptReference Path="~/Content/bootstrap/js/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/datatables/jquery.dataTables.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/datatables/dataTables.bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/fastclick/fastclick.js" />
+                <asp:ScriptReference Path="~/Content/dist/js/app.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/sparkline/jquery.sparkline.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" />
+                <asp:ScriptReference Path="~/Content/plugins/slimScroll/jquery.slimscroll.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/chartjs/Chart.min.js" />
+                <asp:ScriptReference Path="~/Content/plugins/timepicker/bootstrap-timepicker.min.js" />
+                <asp:ScriptReference Path="~/Content/dist/js/print.min.js"></asp:ScriptReference>
+                <asp:ScriptReference Path="~/Content/dist/js/demo.js" />
+                <asp:ScriptReference Path="~/Content/dist/js/select2.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+        <div class="wrapper">
+            <header class="main-header">
+                <uc1:uc_Header runat="server" ID="uc_Header1" />
+
+                <uc1:uc_LeftMenu runat="server" ID="uc_LeftMenu" />
+            </header>
+
+            <div id="body">
+                <div class="content-wrapper">
+                    <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
+                    <asp:UpdatePanel ID="upc_PlaceHolder" runat="server">
+                        <ContentTemplate>
+                            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+            <uc1:uc_Footer runat="server" ID="uc_Footer" />
+        </div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div class="modal modal-danger fade" id="viewInvoiceModelErrorMessage" role="dialog" aria-labelledby="viewInvoiceModelErrorMessage" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title">
+                                    <i class="fa fa-globe"></i>
+                                    <asp:Label ID="Label3" runat="server" Text="Error Message"></asp:Label>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <asp:Label ID="lblError" runat="server"></asp:Label>
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-outline pull-right" data-dismiss="modal" aria-hidden="true">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal modal-success fade" id="viewInvoiceModelSucessMessage" role="dialog" aria-labelledby="viewInvoiceModelSucessMessage" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title">
+                                    <i class="fa fa-globe"></i>
+                                    <asp:Label ID="lblPopHeaderText" runat="server" Text="Success Message"></asp:Label>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <asp:Label ID="lblSuccess" runat="server"></asp:Label>
+                                </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-outline pull-right" data-dismiss="modal" aria-hidden="true">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal modal-warning fade" id="viewInvoiceModelWarningMessage" role="dialog" aria-labelledby="viewInvoiceModelWarningMessage" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title">
+                                    <i class="fa fa-exclamation-triangle"></i>
+                                    <asp:Label ID="Label1" runat="server" Text="Warning Message"></asp:Label>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>
+                                    <asp:Label ID="lblWarning" runat="server"></asp:Label>
+                                </p>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-outline pull-right" data-dismiss="modal" aria-hidden="true">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ContentTemplate>
+
+        </asp:UpdatePanel>
+    </form>
+    <!-- ChartJS 1.0.1 
+    <script src="../plugins/chartjs/Chart.min.js"></script>-->
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) 
+    <script src="../dist/js/pages/dashboard2.js"></script>-->
+    <!-- AdminLTE for demo purposes
+    <script src="../dist/js/demo.js"></script> -->
+
+
+<script>  
+    (function () {
+        var
+            form = $('.form'),
+            cache_width = form.width(),
+            a4 = [595.28, 841.89]; // for a4 size paper width and height  
+
+        $('#create_pdf').on('click', function () {
+            $('body').scrollTop(0);
+            createPDF();
+        });
+        //create pdf  
+        function createPDF() {
+            getCanvas().then(function (canvas) {
+                var
+                    img = canvas.toDataURL("image/png"),
+                    doc = new jsPDF({
+                        unit: 'px',
+                        format: 'a4'
+                    });
+                doc.addImage(img, 'JPEG', 20, 20);
+                doc.save('Bhavdip-html-to-pdf.pdf');
+                form.width(cache_width);
+            });
+        }
+
+        // create canvas object  
+        function getCanvas() {
+            form.width((a4[0] * 1.33333) - 80).css('max-width', 'none');
+            return html2canvas(form, {
+                imageTimeout: 2000,
+                removeContainer: true
+            });
+        }
+
+    }());  
+</script>
+<script>  
+    /* 
+ * jQuery helper plugin for examples and tests 
+ */
+    (function ($) {
+        $.fn.html2canvas = function (options) {
+            var date = new Date(),
+                $message = null,
+                timeoutTimer = false,
+                timer = date.getTime();
+            html2canvas.logging = options && options.logging;
+            html2canvas.Preload(this[0], $.extend({
+                complete: function (images) {
+                    var queue = html2canvas.Parse(this[0], images, options),
+                        $canvas = $(html2canvas.Renderer(queue, options)),
+                        finishTime = new Date();
+
+                    $canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);
+                    $canvas.siblings().toggle();
+
+                    $(window).click(function () {
+                        if (!$canvas.is(':visible')) {
+                            $canvas.toggle().siblings().toggle();
+                            throwMessage("Canvas Render visible");
+                        } else {
+                            $canvas.siblings().toggle();
+                            $canvas.toggle();
+                            throwMessage("Canvas Render hidden");
+                        }
+                    });
+                    throwMessage('Screenshot created in ' + ((finishTime.getTime() - timer) / 1000) + " seconds<br />", 4000);
+                }
+            }, options));
+
+            function throwMessage(msg, duration) {
+                window.clearTimeout(timeoutTimer);
+                timeoutTimer = window.setTimeout(function () {
+                    $message.fadeOut(function () {
+                        $message.remove();
+                    });
+                }, duration || 2000);
+                if ($message)
+                    $message.remove();
+                $message = $('<div ></div>').html(msg).css({
+                    margin: 0,
+                    padding: 10,
+                    background: "#000",
+                    opacity: 0.7,
+                    position: "fixed",
+                    top: 10,
+                    right: 10,
+                    fontFamily: 'Tahoma',
+                    color: '#fff',
+                    fontSize: 12,
+                    borderRadius: 12,
+                    width: 'auto',
+                    height: 'auto',
+                    textAlign: 'center',
+                    textDecoration: 'none'
+                }).hide().fadeIn().appendTo('body');
+            }
+        };
+    })(jQuery);
+
+</script>
+    <script type="text/javascript">
+        //$(document).ready(function () {
+        //    function disableBack() { window.history.forward() }
+
+        //    window.onload = disableBack();
+        //    window.onpageshow = function (evt) { if (evt.persisted) disableBack() }
+        //});
+
+        $(function () {
+            $('select').select2();
+            //$('.select2, .select2-container, .select2-container--default').removeAttr("style");
+            //$('.select2, .select2-container, .select2-container--default').attr("style", "width:100%");
+            // Select deselect all
+            $('.selectall input:first-child').click(function () {
+
+                if ($(this).is(':checked')) {
+                    $('.selectone input:first-child').prop('checked', true);
+                    // alert("Hi");
+                } else {
+                    $('.selectone input:first-child').prop('checked', false);
+                    // alert("ankita")
+                }
+            });
+
+            $(function () {
+                // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
+                $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                    // save the latest tab; use cookies if you like 'em better:
+                    localStorage.setItem('lastTab', $(this).attr('href'));
+                    //alert(e);
+                });
+
+                // go to the latest tab, if it exists:
+                var lastTab = localStorage.getItem('lastTab');
+                if (lastTab) {
+                    $('[href="' + lastTab + '"]').tab('show');
+                }
+            });
+
+            // Update select all based on individual checkbox 
+            $('.selectone input:first-child').click(function () {
+                if ($(this).is(':checked')) {
+
+                    if ($('.selectone input:first-child:checked').length == $('.selectone').length) {
+                        $('.selectall input:first-child').prop('checked', true);
+                        //alert("bye");
+                    } else {
+                        $('.selectall input:first-child').prop('checked', false);
+                    }
+                } else {
+                    $('.selectall input:first-child').prop('checked', false);
+                }
+            });
+
+        });
+        $(function () {
+            // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                // save the latest tab; use cookies if you like 'em better:
+                localStorage.setItem('lastTab', $(this).attr('href'));
+                //alert(e.attr);
+            });
+
+            // go to the latest tab, if it exists:
+            var lastTab = localStorage.getItem('lastTab');
+            //alert(lastTab);
+            if (lastTab) {
+                $('[href="' + lastTab + '"]').tab('show');
+
+            }
+        });
+        $(document).ready(function () {
+            $('a[data-toggle="tab"]').on('click', function (e) {
+                //alert($('.form-group input[type="text"]'));
+                $('.form-group input[type="password"]').val('');
+                $(".form-group").removeClass("has-error");
+                $(".help-block").css('display', 'none');
+            });
+        });
+        $(document).ready(function () {
+            $('.dataTable').DataTable({
+                buttons: [
+                    {
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'excel', 'pdf'
+                        ]
+                    }
+                ]
+            });
+        });
+        //function extendedValidatorUpdateDisplay(obj) {
+        //    // Appelle la méthode originale
+        //    if (typeof originalValidatorUpdateDisplay === "function") {
+        //        originalValidatorUpdateDisplay(obj);
+        //    }
+        //    // Récupère l'état du control (valide ou invalide) 
+        //    // et ajoute ou enlève la classe has-error
+        //    var control = document.getElementById(obj.controltovalidate);
+        //    if (control) {
+        //        var isValid = true;
+        //        for (var i = 0; i < control.Validators.length; i += 1) {
+        //            if (!control.Validators[i].isvalid) {
+        //                isValid = false;
+        //                break;
+        //            }
+        //        }
+        //        if (isValid) {
+        //            $(control).closest(".form-group").removeClass("has-error");
+        //        } else {
+        //            $(control).closest(".form-group").addClass("has-error");
+        //        }
+        //    }
+        //}
+        //// Remplace la méthode ValidatorUpdateDisplay
+        //var originalValidatorUpdateDisplay = window.ValidatorUpdateDisplay;
+        //window.ValidatorUpdateDisplay = extendedValidatorUpdateDisplay;
+
+        $(function () {
+            $(document).ready(function () {
+                $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(this).parent().siblings().removeClass('open');
+                    $(this).parent().toggleClass('open');
+                });
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+                function EndRequestHandler(sender, args) {
+                    $(function () {
+                        $('select').select2();
+                        //$('.select2, .select2-container, .select2-container--default').removeAttr("style");
+                        //$('.select2, .select2-container, .select2-container--default').attr("width", "100%");
+
+                        // Select deselect all
+                        $('.selectall input:first-child').click(function () {
+
+                            if ($(this).is(':checked')) {
+                                $('.selectone input:first-child').prop('checked', true);
+                                // alert("Hi");
+                            } else {
+                                $('.selectone input:first-child').prop('checked', false);
+                                // alert("ankita")
+                            }
+                        });
+
+                        $(function () {
+                            // for bootstrap 3 use 'shown.bs.tab', for bootstrap 2 use 'shown' in the next line
+                            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                                // save the latest tab; use cookies if you like 'em better:
+                                localStorage.setItem('lastTab', $(this).attr('href'));
+                                //alert(e);
+                            });
+
+                            // go to the latest tab, if it exists:
+                            var lastTab = localStorage.getItem('lastTab');
+                            if (lastTab) {
+                                $('[href="' + lastTab + '"]').tab('show');
+                            }
+                        });
+
+                        // Update select all based on individual checkbox 
+                        $('.selectone input:first-child').click(function () {
+                            if ($(this).is(':checked')) {
+
+                                if ($('.selectone input:first-child:checked').length == $('.selectone').length) {
+                                    $('.selectall input:first-child').prop('checked', true);
+                                    //alert("bye");
+                                } else {
+                                    $('.selectall input:first-child').prop('checked', false);
+                                }
+                            } else {
+                                $('.selectall input:first-child').prop('checked', false);
+                            }
+                        });
+                        function extendedValidatorUpdateDisplay(obj) {
+                            // Appelle la méthode originale
+                            if (typeof originalValidatorUpdateDisplay === "function") {
+                                originalValidatorUpdateDisplay(obj);
+                            }
+                            // Récupère l'état du control (valide ou invalide) 
+                            // et ajoute ou enlève la classe has-error
+                            var control = document.getElementById(obj.controltovalidate);
+                            if (control) {
+                                var isValid = true;
+                                for (var i = 0; i < control.Validators.length; i += 1) {
+                                    if (!control.Validators[i].isvalid) {
+                                        isValid = false;
+                                        break;
+                                    }
+                                }
+                                if (isValid) {
+                                    $(control).closest(".form-group").removeClass("has-error");
+                                } else {
+                                    $(control).closest(".form-group").addClass("has-error");
+                                }
+                            }
+                        }
+
+                        $(".timepicker").timepicker({
+                            showInputs: false
+                        });
+                        // Remplace la méthode ValidatorUpdateDisplay
+                        var originalValidatorUpdateDisplay = window.ValidatorUpdateDisplay;
+                        window.ValidatorUpdateDisplay = extendedValidatorUpdateDisplay;
+                    });
+                  
+
+                    $(document).ready(function () {
+                        $('.dataTable').DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copy', 'excel', 'pdf'
+                            ]
+                        });
+                    });
+                    var date = new Date();
+                    var currentMonth = date.getMonth();
+                    var currentDate = date.getDate();
+                    var currentYear = date.getFullYear();
+
+                    $(".date-picker_attendance").datepicker({
+
+                        showButtonPanel: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        controlType: 'select',
+                        timeFormat: 'hh:mm TT',
+                        yearRange: "-50:-2"
+                    });
+
+                    $(".date-picker_venderdate").datepicker({
+
+                        showButtonPanel: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        controlType: 'select',
+                        timeFormat: 'hh:mm TT',
+                        yearRange: "-50:-2"
+                    }).datepicker('setDate', new Date());
+
+                    var date = new Date();
+                    var currentMonth = date.getMonth() - 2;
+                    var currentDate = date.getDate();
+                    var currentYear = date.getFullYear();
+                    $(".date-picker_invertdate").datepicker({
+
+                        showButtonPanel: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        controlType: 'select',
+                        timeFormat: 'hh:mm TT',
+                        yearRange: "-30:-2",
+                        dateFormat: 'dd/mm/yy'
+                    });
+
+                    $(".date-picker").datepicker({
+
+                        showButtonPanel: true,
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: "-100:+0",
+                        dateFormat: 'dd/mm/yy',
+                        controlType: 'select',
+                        timeFormat: 'hh:mm TT',
+                        yearRange: "-50:-2"
+                    }).datepicker('setDate', new Date());
+                }
+                var date = new Date();
+                var currentMonth = date.getMonth();
+                var currentDate = date.getDate();
+                var currentYear = date.getFullYear();
+
+                $(".date-picker_venderdate").datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    controlType: 'select',
+                    timeFormat: 'hh:mm TT',
+                    yearRange: "-50:-2"
+                }).datepicker('setDate', new Date());
+
+                $(".date-picker").datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-100:+0",
+                    dateFormat: 'dd/mm/yy',
+                    controlType: 'select',
+                    timeFormat: 'hh:mm TT',
+                }).datepicker('setDate', new Date());
+                var date = new Date();
+                var currentMonth = date.getMonth() - 2;
+                var currentDate = date.getDate();
+                var currentYear = date.getFullYear();
+
+                $(".date-picker_invertdate").datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    controlType: 'select',
+                    timeFormat: 'hh:mm TT',
+                    yearRange: "-30:-2",
+                    dateFormat: 'dd/mm/yy'
+                });
+
+                $(".date-picker_attendance").datepicker({
+
+                    showButtonPanel: true,
+                    changeMonth: true,
+                    changeYear: true,
+                    controlType: 'select',
+                    timeFormat: 'hh:mm TT',
+                    yearRange: "-50:-2"
+                }).datepicker('setDate', new Date());
+            });
+        });
+
+
+
+        function OnFocusNos(e)
+        {
+            debugger;
+            try
+            {
+                var vals = $(e).val().trim();
+                if (vals == "" || parseInt(vals)<=0)
+                    $(e).val("");
+            }
+            catch (err)
+            {
+                alert(err.Description);
+            }
+        }
+
+        function OnFocusDecNos(e) {
+            debugger;
+            try {
+                var vals = $(e).val().trim();
+                if (vals == "" || parseInt(vals) <= 0)
+                    $(e).val("");
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+        function OnBlurNos(e) {
+            debugger;
+            try {
+                var vals = $(e).val().trim();
+                if (vals == "" || parseInt(vals) <= 0)
+                    $(e).val("0");
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+        function OnBlurDecNos(e) {
+            debugger;
+            try {
+                var vals = $(e).val().trim();
+                if (vals == "" || parseInt(vals) <= 0)
+                    $(e).val("0.0");
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+
+        //This code restricts the user to enter only numbers.
+        function onlyNos(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+
+        // This code restrict the user to enter only numbers including decimal value.
+        function onlyDecNos(e, t) {
+            try {
+                if (window.event) {
+                    var charCode = window.event.keyCode;
+                }
+                else if (e) {
+                    var charCode = e.which;
+                }
+                else { return true; }
+                if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+                return true;
+            }
+            catch (err) {
+                alert(err.Description);
+            }
+        }
+        //This code restricts the user to enter only alphabets inlcuding whitespaces.
+        function ValidateAlpha(evt) {
+            var keyCode = (evt.which) ? evt.which : evt.keyCode
+            if ((keyCode < 65 || keyCode > 90) && (keyCode < 97 || keyCode > 123) && keyCode != 32)
+
+                return false;
+            return true;
+        }
+        $(".timepicker").timepicker({
+            showInputs: false
+        });
+    </script>
+    <!--Start of Tawk.to Script-->
+<%--    <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5a0156de198bd56b8c039a92/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+    </script>--%>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

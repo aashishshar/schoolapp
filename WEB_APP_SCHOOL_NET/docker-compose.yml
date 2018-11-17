@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  web_app_school_net:
+    image: web_app_school_net
+    build:
+      context: .\WEB_APP_SCHOOL_NET
+      dockerfile: Dockerfile

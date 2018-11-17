@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB_APP_SCHOOL_NET", "WEB_APP_SCHOOL_NET\WEB_APP_SCHOOL_NET.csproj", "{0734FF51-7519-4C54-B2F4-2FFF815D0AE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEB_APP_SCHOOL_NET.Tests", "WEB_APP_SCHOOL_NET.Tests\WEB_APP_SCHOOL_NET.Tests.csproj", "{81749B08-A766-4BF6-8AE1-FDD3CCDACDF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.MOBILE.APP", "API.MOBILE.APP\API.MOBILE.APP.csproj", "{BD5B3654-E73F-4055-AD47-A858C9C99AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APP_Test", "APP_Test\APP_Test.csproj", "{10F11894-0A9F-44E0-AEF3-47C99F16F6D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0734FF51-7519-4C54-B2F4-2FFF815D0AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0734FF51-7519-4C54-B2F4-2FFF815D0AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0734FF51-7519-4C54-B2F4-2FFF815D0AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0734FF51-7519-4C54-B2F4-2FFF815D0AE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81749B08-A766-4BF6-8AE1-FDD3CCDACDF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81749B08-A766-4BF6-8AE1-FDD3CCDACDF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81749B08-A766-4BF6-8AE1-FDD3CCDACDF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81749B08-A766-4BF6-8AE1-FDD3CCDACDF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5B3654-E73F-4055-AD47-A858C9C99AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD5B3654-E73F-4055-AD47-A858C9C99AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD5B3654-E73F-4055-AD47-A858C9C99AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD5B3654-E73F-4055-AD47-A858C9C99AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10F11894-0A9F-44E0-AEF3-47C99F16F6D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F11894-0A9F-44E0-AEF3-47C99F16F6D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F11894-0A9F-44E0-AEF3-47C99F16F6D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F11894-0A9F-44E0-AEF3-47C99F16F6D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35388DAA-9568-4F5E-B143-6213409FC043}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pssblog.visualstudio.com/
+		SccProjectUniqueName0 = WEB_APP_SCHOOL_NET.Tests\\WEB_APP_SCHOOL_NET.Tests.csproj
+		SccProjectName0 = WEB_APP_SCHOOL_NET.Tests
+		SccLocalPath0 = WEB_APP_SCHOOL_NET.Tests
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = API.MOBILE.APP\\API.MOBILE.APP.csproj
+		SccProjectName2 = API.MOBILE.APP
+		SccLocalPath2 = API.MOBILE.APP
+		SccProjectUniqueName3 = APP_Test\\APP_Test.csproj
+		SccProjectName3 = APP_Test
+		SccLocalPath3 = APP_Test
+		SccProjectUniqueName4 = WEB_APP_SCHOOL_NET\\WEB_APP_SCHOOL_NET.csproj
+		SccProjectName4 = WEB_APP_SCHOOL_NET
+		SccLocalPath4 = WEB_APP_SCHOOL_NET
+	EndGlobalSection
+EndGlobal
