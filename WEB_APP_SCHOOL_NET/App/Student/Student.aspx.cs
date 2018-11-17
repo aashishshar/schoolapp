@@ -181,6 +181,7 @@ namespace WEB_APP_SCHOOL_NET.App.Student
                     //    }
                     //    ImgByte = bytes;
                     //}
+
                     fileName = Guid.NewGuid().ToString() + Path.GetExtension(Path.GetFileName(FileUpload1.PostedFile.FileName));
                     FileUpload1.PostedFile.SaveAs(Server.MapPath("~/Images/") + fileName);
                     student.ImageUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + ("/Images/") + fileName;
