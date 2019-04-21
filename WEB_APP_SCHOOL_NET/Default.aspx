@@ -5,5 +5,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <uc1:sms runat="server" id="sms" />
+
+
     <asp:GridView ID="GridView1" runat="server"></asp:GridView>
 </asp:Content>
